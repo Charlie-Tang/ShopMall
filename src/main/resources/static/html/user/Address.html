@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>收货地址</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<body>
+	
+</body>
+	<script>
+	jQuery(document).ready(function(){
+
+		$.ajax({
+			type:"GET",
+			url:"http://localhost:8888/user/GetUserAddress",
+			xhrFields:{withCredentials:true},
+			success:function(data){
+				if(data.status == "success"){
+					alert("获取信息成功");
+					}else
+					{
+					alert("获取信息失败，原因为："+data.data.errMsg);
+					}
+				},
+			error:function(data){
+					alert("获取信息失败，原因是："+data.responseText);
+				}
+			});
+
+		});
+	</script>
+</html>

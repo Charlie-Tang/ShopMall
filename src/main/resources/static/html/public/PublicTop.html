@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="../../assets/global/css/components.css" rel="stylesheet" type="text/css"/>
+	<link href="../../assets/admin/pages/css/login.css" rel="stylesheet" type="text/css"/>
+	<script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<head>
+		<meta charset="utf-8" />
+		<title>置顶标题</title>
+		
+	</head>
+	<style>
+		body
+		{
+			font-family: "微软雅黑";
+			font-size: 12px;
+		}
+		a
+		{
+			color: red;
+		}
+		.redColor{
+			/*颜色不可被覆盖*/
+    		color: #C40000 !important;
+		}
+		nav.top{
+		    background-color: #f2f2f2;
+		    /*设定上下边框的边距*/
+		    padding-top: 5px;
+		    padding-bottom: 5px;
+		    /*设定下边距的颜色和长度*/
+		    border-bottom:1px solid  #e7e7e7;
+		}
+		nav.top span, nav.top a{
+		    color: black;
+		    margin: 0px 10px 0px 10px;
+		}
+		nav.top a:hover{
+		    color: red;
+		    text-decoration: none;
+		}
+	</style>
+	<body>
+		<nav class="top">
+			<a href="../Item/Main.html">
+				<span class="glyphicon glyphicon-home redColor"></span>天猫首页
+			</a>
+			<span>喵，欢迎来到天猫</span>
+			<a href="../login/ChooseLoginType.html">请登录</a>
+			<a href="../register/ChooseRegisterType.html">免费注册</a>
+			
+			<span class="pull-right">
+				<a href="#">我的订单</a>
+            <a href="#">
+                <span class="glyphicon glyphicon-shopping-cart redColor"></span>购物车
+                <strong>0</strong>件
+            </a>
+            	<a href="../user/userInfo.html">个人中心</a>
+            </span>
+		</nav>
+		
+		
+	</body>
+</html>

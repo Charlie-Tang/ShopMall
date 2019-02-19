@@ -1,0 +1,243 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+a:link,a:visited{
+    /*去掉超链接的下划线*/
+    text-decoration: none;
+    color: #333;
+}
+
+body{
+    font-family: "Microsoft YaHei UI";
+    color: #14191e;
+}
+
+@font-face {
+    font-family: "myfont";
+    src: url("../img/font/iconfont.eot");
+    src: url("../img/font/iconfont.eot") format("embedded-opentype"),
+         url("../img/font/iconfont.woff") format("woff"),
+         url("../img/font/iconfont.ttf") format("truetype"),
+         url("../img/font/iconfont.svg#iconfog") format("svg");
+}
+
+.main{
+    width: 1200px;
+    height: 460px;
+    /**
+    水平居中 左右外边距30px
+     */
+    margin: 30px auto;
+    overflow: hidden;
+    /*为了让上一张、下一张按钮能够相对这个父元素进行定位*/
+    position: relative;
+}
+
+.banner{
+    width: 1200px;
+    height: 460px;
+    overflow: hidden;
+    /*因为要让其存放图片的子元素banner-slide相对这个父元素进行定位，因此需要加上relative*/
+    position: relative;
+}
+
+.banner-slide{
+    width: 1200px;
+    height: 460px;
+    background-repeat: no-repeat;
+    /*因为要实现图片的重叠，因此需要使用到绝对定位（相对banner）*/
+    position: absolute;
+    /*默认隐藏全部图片，根据slide-active类来决定显示哪张图*/
+    display: none;
+}
+
+.slide1{
+    background-image: url("../img/bg1.jpg");
+}
+
+.slide2{
+    background-image: url("../img/bg2.jpg");
+}
+
+.slide3{
+    background-image: url("../img/bg3.jpg");
+}
+
+/*用来隐藏和显示图片的类，要显示哪张图就在那张图的div上加上这个类*/
+.slide-active{
+    display: block;
+}
+
+.button{
+    position: absolute;
+    width: 40px;
+    height: 80px;
+    left: 244px;
+    top: 50%;
+    margin-top: -40px;
+    background: url("../img/arrow.png") no-repeat center;
+}
+
+/*这里就体现了为什么这种轮播图使用a标签来承载图片，因为a标签有hover这个属性，可以实现鼠标放上去的特效*/
+.button:hover{
+    /*实现鼠标放上上一张、下一张按钮时背景变透明的特效*/
+    background-color: #333;
+    opacity: 0.2;
+    /*适配到其他浏览器，例如IE8及之前*/
+    filter:alpha(opacity=20);
+}
+
+/*将向右的箭头旋转180度变成向左的箭头 表示上一张图片 */
+.prev{
+    transform: rotate(180deg);
+}
+
+/*上一张按钮不用改样式，但是下一张要改在右边*/
+.next{
+    left: auto;
+    right: 0;
+    background: url("../img/arrow.png") no-repeat center;
+}
+
+.dots{
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+    text-align: right;
+}
+
+/*小圆点样式*/
+.dots span{
+    /*为了能设置行级标签span的宽高，需要将span声明为行内块元素*/
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    /*将圆点设置为半透明的深黑色*/
+    background: rgba(7,17,27,0.4);
+    line-height: 12px;
+    /*圆点白色描边 使用阴影实现*/
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.8) inset;
+    margin-left: 8px;
+}
+
+/*改变被点击的小圆点的样式*/
+.dots span.active{
+    box-shadow: 0 0 0 2px rgba(7,17,27,0.4) inset;
+    background: #fff;
+}
+
+/*导航菜单半透明层*/
+.menu-box{
+    width: 244px;
+    height: 460px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(7,17,27,0.5);
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/*导航菜单*/
+.menu-content{
+    width: 244px;
+    height: 454px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    padding-top: 6px;
+}
+
+/*导航菜单项*/
+.menu-item{
+    height: 64px;
+    line-height: 66px;
+    font-size: 16px;
+    padding: 0 24px;
+    position: relative;
+}
+
+.menu-item a:link, .menu-item a:visited{
+    color: #fff;
+}
+
+.menu-item a{
+    /*将a定为块元素*/
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: 0 8px;
+    height: 63px;
+}
+
+.menu-item i{
+    position: absolute;
+    font-size: 24px;
+    font-family: "myfont";
+    right: 32px;
+    font-style: normal;
+    font-weight: normal;
+    color: rgba(255,255,255,0.5);
+}
+
+.sub-menu{
+    width: 730px;
+    height: 458px;
+    border: 1px solid #d9dde1;
+    background: #fff;
+    position: absolute;
+    left: 244px;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+.inner-box{
+    width: 100%;
+    height: 100%;
+    background: url("../img/fe.png") no-repeat;
+}
+
+.sub-inner-box{
+    width: 652px;
+    margin-left: 40px;
+    overflow: hidden;
+}
+
+.title{
+    color: #f01414;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 28px 0 30px 0;
+    font-weight: bold;
+}
+
+.sub-row{
+    margin-bottom: 25px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+/*左外边距10px类*/
+.mr10{
+    margin-right: 10px;
+}
+
+/*右外边距10px类*/
+.ml10{
+    margin-left: 10px;
+}
+
+/*隐藏子菜单的类*/
+.hide{
+    display: none;
+}
