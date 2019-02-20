@@ -192,17 +192,4 @@ public class UserController extends BaseController{
 			return CommonReturnType.create(null);
 		}
 		
-		//获取用户地址模块
-		@RequestMapping(value="/GetUserAddress",method=RequestMethod.GET)
-		@ResponseBody
-		public CommonReturnType GetUserAddress()  {
-			
-			//从之前登录中的信息中取出List
-			UserModel userModel = (UserModel)HttpServletRequest.getSession().getAttribute("LOGIN_USER");
-			return CommonReturnType.create(userModel.getAddress());
-		}
-		
-		//获取用户订单模块
-		
-		
 }

@@ -4,20 +4,56 @@
 <meta charset="UTF-8">
 <title>收货地址</title>
 </head>
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/components.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/pages/css/login.css" rel="stylesheet" type="text/css"/>
 <script src="https://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
 <body>
+	<caption>
+            <h2>收货地址详情表</h2>
+        </caption>
+	<table class="table table-bordered" id="AddressTable">
+		<tr>
+			<th>收货地址</th>
+			<th>收货人</th>
+			<th>邮编</th>
+			<th>收货人手机号</th>
+		</tr>
+		<tr>
+			<td><input type="text" id="textfield1"></td>
+			<td><input type="text" id="textfield2"></td>
+			<td><input type="text" id="textfield3"></td>
+			<td><input type="text" id="textfield4"></td>
+		</tr>
+	</table>
 	
+	<div><button class="btn blue" id="Update" type="submit">
+				修改
+	</button></div>
 </body>
 	<script>
 	jQuery(document).ready(function(){
 
 		$.ajax({
 			type:"GET",
-			url:"http://localhost:8888/user/GetUserAddress",
+			url:"http://localhost:8888/Address/GetUserAddress",
 			xhrFields:{withCredentials:true},
 			success:function(data){
 				if(data.status == "success"){
-					alert("获取信息成功");
+					for(i in data.data){
+// 						var tr;
+// 						tr='<td>'+data.data[i].address+'</td>'+
+// 						'<td>'+data.data[i].man+'</td>'+
+// 						'<td>'+data.data[i].post+'</td>'+
+// 						'<td>'+data.data[i].mantele+'</td>';
+// 						$("#AddressTable").append('<tr>'+tr+'</tr>')
+
+						document.getElementById("textfield1").value = data.data[i].address;
+						document.getElementById("textfield2").value = data.data[i].man;
+						document.getElementById("textfield3").value = data.data[i].post;
+						document.getElementById("textfield4").value = data.data[i].mantele;
+						}
+// 					alert("获取信息成功");
 					}else
 					{
 					alert("获取信息失败，原因为："+data.data.errMsg);
@@ -27,6 +63,10 @@
 					alert("获取信息失败，原因是："+data.responseText);
 				}
 			});
+
+// 		$("#Update").on("click",function(){
+			
+// 			};
 
 		});
 	</script>
